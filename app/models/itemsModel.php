@@ -34,7 +34,7 @@ class itemsModel{
     }
 
     public function updateTarea($nombre,$sensibilidad,$dpi,$rango,$id_equipo,$rol,$id){
-        $query = $this->db->prepare('UPDATE jugador SET nombre = ?, sensibilidad = ?, dpi = ?, rango = ?, id_equipo = ?, rol = ?, WHERE id= ?');
+        $query = $this->db->prepare('UPDATE jugador SET nombre = ?, sensibilidad = ?, dpi = ?, rango = ?, id_equipo = ?, rol = ? WHERE id= ?');
         $query->execute([$nombre,$sensibilidad,$dpi,$rango,$id_equipo,$rol,$id]);
     }
 }
