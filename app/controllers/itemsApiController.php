@@ -23,7 +23,7 @@ class itemsApiController{
         return $this->view->response($items, 200);
     }
 
-    public function getTarea($params = null) {
+    public function getjugador($params = null) {
         $id = $params[':ID'];
         $tarea = $this->model->getjugador($id);
         if(!empty($tarea)){
@@ -35,7 +35,7 @@ class itemsApiController{
         
     }
 
-    public function deletedTarea($params = null){
+    public function deletedjugador($params = null){
         $id = $params[':ID'];
         $task = $this->model->getjugador($id);
         if($task){
@@ -48,7 +48,7 @@ class itemsApiController{
 
     }
 
-    public function addtarea($params = null){
+    public function addjugador($params = null){
         $data = $this->getdata();
 
         $id = $this->model->guardar($data-> nombre,$data-> sensibilidad,$data-> dpi,$data-> rango,$data-> id_equipo,$data-> rol);
