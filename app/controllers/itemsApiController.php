@@ -18,11 +18,29 @@ class itemsApiController{
         return json_decode($this->data);
     }
 
-    public function getAllItems($params = null) {
-        $items = $this->model->getAllItems();
-        return $this->view->response($items, 200);
+    public function getJugadores($params = null) {
+        if(isset($_GET['ordenarPor'])){
+            if(isset($_GET['ordenarPor']) && isset($_GET['orden'])){
+                $jugador = $this->model->getJugadores($_GET['ordenarPor'],$_GET['orden']);
+                }
+                if($jugador){
+                    return $this->view->response($jugador, 200);
+                }
+                else {
+                    $this->view->response("no se encontraron jugadores", 400);
+                }
+        }
+        else{
+            $jugador = $this->model->getJugadores();
+            if($jugador){
+            $this->view->response( $jugador, 200);
+            }
+            else {
+            $this->view->response( "error de solicitud", 404);
+            }
+        }
     }
-
+    
     public function getjugador($params = null) {
         $id = $params[':ID'];
         $tarea = $this->model->getjugador($id);
@@ -63,7 +81,7 @@ class itemsApiController{
         }
     }
 
-    public function updatetarea($params = null){
+    public function updatejugador($params = null){
         $id = $params[':ID'];
         $jugador = $this->model->getjugador($id);
         

@@ -7,12 +7,21 @@ class itemsModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=tabajo practica; charset=utf8', 'root','');
     }
 
-    function getAllItems(){
-        $query = $this->db->prepare(" SELECT * FROM jugador" );
-        $query->execute();
-        $tarea = $query->fetchAll(PDO::FETCH_OBJ);
-        return $tarea;
+    function getJugadores($ordenarPor = null, $orden = null){
+        if(isset($ordenarPor) && isset($orden)){ 
+            $query = $this->db->prepare(" SELECT * FROM jugador ORDER BY $ordenarPor $orden" );
+            $query->execute();
+            $tarea = $query->fetchAll(PDO::FETCH_OBJ);
+            return $tarea;
+        }
+        else {
+            $query = $this->db->prepare(" SELECT * FROM jugador " );
+            $query->execute();
+            $tarea = $query->fetchAll(PDO::FETCH_OBJ);
+            return $tarea;
+        }
     }
+    
     function getjugador($id){
         $sentencia = $this->db->prepare(" SELECT * FROM jugador  WHERE id = ?");
         $sentencia->execute([$id]);    
