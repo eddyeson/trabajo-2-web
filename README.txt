@@ -9,6 +9,10 @@ hhttp://localhost/trabajo-2-web-main/api/jugadores/(ID)
 usando metodo put al llenar el body en forma de json se envia y editaran los valores de la posicion que se indica en la URL(:ID=).
 siempre  y cuando ningun elemento este vacio y cumpla con los requisitos
 
+POST(CREA UN ELEMENTO)
+hhttp://localhost/trabajo-2-web-main/api/jugadores/
+llenando el body en formato JSON con todos los campos llenos ,crea un nuevo elemento en la base de datos cuyo ID va a ser el siguiente al ultimo guardado
+
 DELETED(/:ID):localhost/tp-web-2/jugadores
 hhttp://localhost/trabajo-2-web-main/api/jugadores/(ID)
 se borrara el elemento de la base de daton donse de indique con el ID en la url y se imprimira un mensaje de que fue eliminado, 
