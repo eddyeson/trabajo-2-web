@@ -27,7 +27,7 @@ class itemsApiController{
                     return $this->view->response($jugador, 200);
                 }
                 else {
-                    $this->view->response("no se encontraron jugadores", 400);
+                    $this->view->response("no se encontraron jugadores", 404);
                 }
         }
         else{
@@ -65,19 +65,26 @@ class itemsApiController{
         }
 
     }
-
+    private function checkinputs($body){
+        foreach($body as $k => $v){
+            if(empty($v) || $v==NULL){
+                return true;
+            }
+            else if (!is_numeric($v) && ctype_space($v)){
+                return true;
+            }
+        }
+        return false;
+    }
     public function addjugador($params = null){
-        $data = $this->getdata();
-
-        $id = $this->model->guardar($data-> nombre,$data-> sensibilidad,$data-> dpi,$data-> rango,$data-> id_equipo,$data-> rol);
-
-        $tarea = $this->model->getjugador($id);
-        if($tarea){
-            var_dump($data);
-            $this->view->response($tarea, 200);
+        $body = $this->getdata();
+        if($this->checkinputs($body)){
+            $this->view->response("La tarea no fue creada", 400);
         }
         else{
-            $this->view->response("La tarea no fue creada", 500);
+            $id = $this->model->guardar($body-> nombre,$body-> sensibilidad,$body-> dpi,$body-> rango,$body-> id_equipo,$body-> rol);
+            $jugador = $this->model->getjugador($id);
+            $this->view->response($jugador, 200);
         }
     }
 
@@ -87,18 +94,19 @@ class itemsApiController{
         
         if($jugador){
             $body = $this->getData();
-            if($body){  
-            $nombre = $body-> nombre;
-            $sensibilidad = $body-> sensibilidad;  
-            $dpi = $body-> dpi;
-            $rango  = $body-> rango;
-            $id_equipo = $body-> id_equipo;
-            $rol = $body-> rol;
-            $jugador = $this->model->updateTarea($nombre,$sensibilidad,$dpi,$rango,$id_equipo,$rol,$id);
-            $this->view->response("tarea id = $id actualizada con exito", 200);
+            if($this->checkinputs($body)){  
+                
+                $this->view->response("data no encontrada", 400);
              }
              else {
-                $this->view->response("data no encontrada", 400);
+                $nombre = $body-> nombre;
+                $sensibilidad = $body-> sensibilidad;  
+                $dpi = $body-> dpi;
+                $rango  = $body-> rango;
+                $id_equipo = $body-> id_equipo;
+                $rol = $body-> rol;
+                $jugador = $this->model->updateTarea($nombre,$sensibilidad,$dpi,$rango,$id_equipo,$rol,$id);
+                $this->view->response("tarea id = $id actualizada con exito", 200);
              }
         }
         else {
