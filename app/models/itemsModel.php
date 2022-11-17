@@ -15,6 +15,7 @@ class itemsModel{
             return $tarea;
         }
         else if(isset($ordenarPor) && isset($orden)){ 
+            echo "holis";
             $query = $this->db->prepare(" SELECT * FROM jugador ORDER BY $ordenarPor $orden" );
             $query->execute();
             $tarea = $query->fetchAll(PDO::FETCH_OBJ);
