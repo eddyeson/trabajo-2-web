@@ -2,7 +2,7 @@ A TENER EN CUENTA
 a la hora de editar(PUT) o agregar(POST) un juegador debera llenar el body en formato JSON y tenes todos los campos llenos .
 en caso de dejar un campo vacio le imprimira un mensaje de que debe llenarlos a todos.
 para los id_equipos: estos son los valores guardados en la base de datos y su respectivos equipos para cada uno.
-(1=navi, 7=vitality, 9=faze clan, 12=virtus pro, 13=ninjas en pijamass)
+(1=navi, 7=vitality, 9=faze clan, 12=virtus pro, 13=ninjas en pijamass);
 ENDPOINTS
 PUT(/:ID):localhost/tp-web-2/jugadores
 hhttp://localhost/trabajo-2-web-main/api/jugadores/(ID)
