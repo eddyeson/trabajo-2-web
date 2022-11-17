@@ -8,7 +8,13 @@ class itemsModel{
     }
 
     function getJugadores($ordenarPor = null, $orden = null){
-        if(isset($ordenarPor) && isset($orden)){ 
+        if((isset($ordenarPor) && !isset($orden))){
+            $query = $this->db->prepare(" SELECT * FROM jugador ORDER BY $ordenarPor DESC" );
+            $query->execute();
+            $tarea = $query->fetchAll(PDO::FETCH_OBJ);
+            return $tarea;
+        }
+        else if(isset($ordenarPor) && isset($orden)){ 
             $query = $this->db->prepare(" SELECT * FROM jugador ORDER BY $ordenarPor $orden" );
             $query->execute();
             $tarea = $query->fetchAll(PDO::FETCH_OBJ);

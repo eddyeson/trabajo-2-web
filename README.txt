@@ -30,6 +30,6 @@ poder ver la cantidad total de elementos y todos los campos asociados a cada usa
 
 OPCIONAL + OBLIGATORIO
 ORDENAR POR UN CAMPO A ELECCION(ordenarPor,orden)
-hhttp://localhost/trabajo-2-web-main/api/jugadores=ordenarPor=(campo)&orden=(DESC O ASC)
+hhttp://localhost/trabajo-2-web-main/api/jugadores?ordenarPor=(campo)&orden=(DESC O ASC)
 este metodo permite a parte de ver todos los elementos que contiene la base de datos, 
 tambien permite que acomodarlos de forma ascendente o descendente especificando esto en la url y a la par el campo por el cual se quiera ordenar

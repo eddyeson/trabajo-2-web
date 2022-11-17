@@ -20,6 +20,9 @@ class itemsApiController{
 
     public function getJugadores($params = null) {
         if(isset($_GET['ordenarPor'])){
+            if(isset($_GET['ordenarPor']) && !isset($_GET['orden'])){
+                $jugador = $this->model->getJugadores($_GET['ordenarPor']);
+            }
             if(isset($_GET['ordenarPor']) && isset($_GET['orden'])){
                 $orden = $_GET['orden'];
                 if($orden == "DESC" || $orden == "desc" || $orden = "ASC" || $orden = "asc"){  
