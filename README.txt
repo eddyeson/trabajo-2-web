@@ -28,7 +28,11 @@ hhttp://localhost/trabajo-2-web-main/api/jugadores/
 este meotod permite ver todos los elementosm enlistados a traves de sus ID de menor a mayor y 
 poder ver la cantidad total de elementos y todos los campos asociados a cada usando
 
-OPCIONAL + OBLIGATORIO
+OBLIGATORIO
+hhttp://localhost/trabajo-2-web-main/api/jugadores?ordenarPor=(campo)
+este endpoitn te trae el todos los jugadores y los ordena por el campo que especifiques en la URL de forma descendente por defecto(no hay que especificar en la url esto)
+
+OPCIONAL 
 ORDENAR POR UN CAMPO A ELECCION(ordenarPor,orden)
 hhttp://localhost/trabajo-2-web-main/api/jugadores?ordenarPor=(campo)&orden=(DESC O ASC)
 este metodo permite a parte de ver todos los elementos que contiene la base de datos, 
